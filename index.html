@@ -15,99 +15,105 @@
   <style>
     :root {
       --base-font-size: 16px;
-      --theme-color: #4f46e5;
-      --theme-color-dark: #3730a3;
+      --theme-color: #0066cc;
+      /* Simple Professional Blue */
+      --theme-color-dark: #004c99;
       --sidebar-width: 300px;
+      --text-color: #333333;
+      --heading-color: #1a1a1a;
+      --code-color: #e01e5a;
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       background: #ffffff;
+      color: var(--text-color);
     }
 
-    /* Cover Page Styling */
+    /* Cover Page Styling - Simplified */
     section.cover {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+      background: #f8f9fa !important;
+      /* Light Gray - Very clean */
+      background: linear-gradient(to bottom, #ffffff, #f3f4f6) !important;
+      color: #333333;
     }
 
     section.cover h1 {
-      font-size: 3.5rem;
+      font-size: 3rem;
       font-weight: 700;
       margin: 0.5rem 0;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      color: #111111;
+      text-shadow: none;
+      /* Removed heavy shadow */
     }
 
     section.cover h1 small {
-      font-size: 1.5rem;
-      opacity: 0.9;
+      font-size: 1.25rem;
+      opacity: 0.7;
+      color: #555;
+      font-weight: 400;
     }
 
     section.cover blockquote {
-      font-size: 1.2rem;
-      opacity: 0.95;
-    }
-
-    section.cover .cover-main {
-      margin: -20px auto 40px;
+      font-size: 1.1rem;
+      color: #555;
     }
 
     section.cover .cover-main>p:last-child a {
-      background: #ffffff;
-      color: #4f46e5;
-      border: none;
-      padding: 12px 32px;
-      font-weight: 600;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background: var(--theme-color);
+      color: #ffffff;
+      border: 1px solid var(--theme-color);
+      padding: 10px 30px;
+      font-weight: 500;
+      border-radius: 4px;
+      /* Simpler radius */
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     section.cover .cover-main>p:last-child a:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      background: var(--theme-color-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      color: #fff;
+    }
+
+    section.cover .cover-main>p:last-child a:last-of-type {
+      background: transparent;
+      color: var(--theme-color);
+      border: 1px solid var(--theme-color);
+    }
+
+    section.cover .cover-main>p:last-child a:last-of-type:hover {
+      background: rgba(0, 102, 204, 0.05);
+      color: var(--theme-color-dark);
     }
 
     /* Sidebar Styling */
     .sidebar {
-      background: #f9fafb;
-      border-right: 1px solid #e5e7eb;
-    }
-
-    .sidebar-nav>ul>li {
-      margin: 4px 0;
-    }
-
-    .sidebar-nav li {
-      margin: 2px 0;
+      background: #fdfdfd;
+      border-right: 1px solid #eaeaea;
     }
 
     .sidebar-nav a {
-      padding: 8px 16px;
-      border-radius: 6px;
-      transition: all 0.2s ease;
-      color: #374151;
+      color: #505d6b;
+      font-weight: 400;
     }
 
     .sidebar-nav a:hover {
       color: var(--theme-color);
-      background: rgba(79, 70, 229, 0.05);
+      text-decoration: none;
     }
 
     .sidebar-nav>ul>li>a {
       font-weight: 600;
-      font-size: 0.95rem;
-      color: #111827;
-    }
-
-    .sidebar-nav ul ul a {
-      padding-left: 32px;
-      font-size: 0.9rem;
-      color: #6b7280;
+      color: #333;
     }
 
     .sidebar-nav .active {
       color: var(--theme-color) !important;
-      background: rgba(79, 70, 229, 0.1);
+      border-right: 2px solid var(--theme-color);
+      background: rgba(0, 102, 204, 0.03);
       font-weight: 600;
     }
 
@@ -119,12 +125,13 @@
     }
 
     .markdown-section h1 {
+      color: #111;
+      border-bottom: 2px solid #eaeaea;
+      /* Thinner, simpler border */
       font-size: 2.5rem;
       font-weight: 700;
       margin-bottom: 1.5rem;
       padding-bottom: 0.5rem;
-      border-bottom: 3px solid var(--theme-color);
-      color: #111827;
     }
 
     .markdown-section h2 {
@@ -132,14 +139,14 @@
       font-weight: 600;
       margin-top: 2rem;
       margin-bottom: 1rem;
-      color: #1f2937;
+      color: #2c3e50;
     }
 
     .markdown-section h3 {
       font-size: 1.5rem;
       font-weight: 600;
       margin-top: 1.5rem;
-      color: #374151;
+      color: #2c3e50;
     }
 
     .markdown-section p,
@@ -156,15 +163,17 @@
     }
 
     .markdown-section code {
-      background: #f3f4f6;
-      color: #dc2626;
+      background: #f0f2f5;
+      color: var(--code-color);
+      border-radius: 3px;
       padding: 2px 6px;
-      border-radius: 4px;
       font-size: 0.9em;
     }
 
     .markdown-section pre {
-      background: #1f2937;
+      background: #f8f9fa;
+      /* Lighter background for code blocks */
+      border: 1px solid #eaeaea;
       border-radius: 8px;
       padding: 1.5rem;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -185,8 +194,8 @@
 
     /* Search Box */
     .search input {
-      background: #ffffff;
-      border: 2px solid #e5e7eb;
+      border: 1px solid #ddd;
+      background: #fff;
       color: #111827;
       border-radius: 8px;
       padding: 10px 16px;
@@ -194,7 +203,7 @@
 
     .search input:focus {
       border-color: var(--theme-color);
-      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+      box-shadow: none;
       outline: none;
     }
 
@@ -284,6 +293,66 @@
 
     ::-webkit-scrollbar-thumb:hover {
       background: #a1a1a1;
+    }
+
+    /* Mobile Responsiveness */
+    @media screen and (max-width: 768px) {
+
+      /* Better Sidebar Toggle for Mobile */
+      .sidebar-toggle {
+        background: transparent;
+        color: var(--theme-color);
+        padding: 10px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        border-radius: 0 0 4px 0;
+        z-index: 100;
+      }
+
+      /* Adjust Content Padding */
+      .markdown-section {
+        padding: 20px 15px 40px;
+        /* Reduced side padding */
+      }
+
+      /* Typography for Mobile */
+      .markdown-section h1 {
+        font-size: 1.8rem;
+      }
+
+      .markdown-section h2 {
+        font-size: 1.5rem;
+      }
+
+      /* Cover Page Mobile */
+      section.cover h1 {
+        font-size: 2.2rem;
+      }
+
+      section.cover .cover-main>p:last-child a {
+        display: block;
+        /* Stack buttons on mobile */
+        margin-bottom: 10px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      /* Main Content Area */
+      body.close .content {
+        left: 0;
+      }
+
+      /* Sidebar on Mobile */
+      body.close .sidebar {
+        transform: translateX(-100%);
+      }
+
+      /* Search Box */
+      .search {
+        margin-top: 40px;
+        /* Space for toggle button */
+      }
     }
   </style>
 </head>
