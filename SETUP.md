@@ -60,6 +60,9 @@ docsify serve .
 The server will start at **http://localhost:3000** automatically.
 
 ## 📦 Deployment
+deploy using vercel
+
+ 1. npx vercel --prod
 
 ### Vercel Deployment
 This project is configured for easy deployment on Vercel.
