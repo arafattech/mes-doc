@@ -35,7 +35,7 @@ npm install -g docsify-cli
 ### 2. Start the Development Server
 ```bash
 cd /var/www/html/mes-doc
-docsify serve .
+npx docsify-cli serve .
 ```
 
 The documentation will be available at: **http://localhost:3000**

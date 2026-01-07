@@ -1,37 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Hybritech MES Documentation</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Official documentation for Hybritech Manufacturing Execution System">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+  <!-- Theme -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+
+  <!-- Custom Styles -->
+  <style>
+    :root {
+      --base-font-size: 16px;
+      --theme-color: #4f46e5;
+      --theme-color-dark: #3730a3;
+      --sidebar-width: 300px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: #ffffff;
+    }
+
+    /* Cover Page Styling */
+    section.cover {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    }
+
+    section.cover h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin: 0.5rem 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    section.cover h1 small {
+      font-size: 1.5rem;
+      opacity: 0.9;
+    }
+
+    section.cover blockquote {
+      font-size: 1.2rem;
+      opacity: 0.95;
+    }
+
+    section.cover .cover-main {
+      margin: -20px auto 40px;
+    }
+
+    section.cover .cover-main>p:last-child a {
+      background: #ffffff;
+      color: #4f46e5;
+      border: none;
+      padding: 12px 32px;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    section.cover .cover-main>p:last-child a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+      background: #f9fafb;
+      border-right: 1px solid #e5e7eb;
+    }
+
+    .sidebar-nav>ul>li {
+      margin: 4px 0;
+    }
+
+    .sidebar-nav li {
+      margin: 2px 0;
+    }
+
+    .sidebar-nav a {
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      color: #374151;
+    }
+
+    .sidebar-nav a:hover {
+      color: var(--theme-color);
+      background: rgba(79, 70, 229, 0.05);
+    }
+
+    .sidebar-nav>ul>li>a {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #111827;
+    }
+
+    .sidebar-nav ul ul a {
+      padding-left: 32px;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    .sidebar-nav .active {
+      color: var(--theme-color) !important;
+      background: rgba(79, 70, 229, 0.1);
+      font-weight: 600;
+    }
+
+    /* Content Styling */
+    .markdown-section {
+      max-width: 900px;
+      padding: 30px 40px 40px;
+      background: #ffffff;
+    }
+
+    .markdown-section h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--theme-color);
+      color: #111827;
+    }
+
+    .markdown-section h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #1f2937;
+    }
+
+    .markdown-section h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      color: #374151;
+    }
+
+    .markdown-section p,
+    .markdown-section li {
+      color: #4b5563;
+      line-height: 1.7;
+    }
+
+    .markdown-section img {
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin: 1.5rem 0;
+      border: 1px solid #e5e7eb;
+    }
+
+    .markdown-section code {
+      background: #f3f4f6;
+      color: #dc2626;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    .markdown-section pre {
+      background: #1f2937;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .markdown-section pre code {
+      background: transparent;
+      color: #f9fafb;
+      padding: 0;
+    }
+
+    .markdown-section blockquote {
+      border-left: 4px solid var(--theme-color);
+      background: #f9fafb;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    /* Search Box */
+    .search input {
+      background: #ffffff;
+      border: 2px solid #e5e7eb;
+      color: #111827;
+      border-radius: 8px;
+      padding: 10px 16px;
+    }
+
+    .search input:focus {
+      border-color: var(--theme-color);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+      outline: none;
+    }
+
+    .search input::placeholder {
+      color: #9ca3af;
+    }
+
+    .matching-post {
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .search .results-panel {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Pagination */
+    .pagination-item {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 16px 20px;
+      transition: all 0.3s ease;
+    }
+
+    .pagination-item:hover {
+      background: #f3f4f6;
+      border-color: var(--theme-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .pagination-item-title {
+      color: #111827;
+      font-weight: 600;
+    }
+
+    .pagination-item-label {
+      color: #6b7280;
+    }
+
+    /* Progress Bar */
+    .progress {
+      background: var(--theme-color) !important;
+    }
+
+    /* Alerts */
+    .alert {
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .alert.tip {
+      background: #ecfdf5;
+      border-left: 4px solid #10b981;
+      color: #065f46;
+    }
+
+    .alert.warning {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      color: #92400e;
+    }
+
+    .alert.note {
+      background: #dbeafe;
+      border-left: 4px solid #3b82f6;
+      color: #1e40af;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #a1a1a1;
+    }
+  </style>
 </head>
+
 <body>
-  <div id="app"></div>
+  <div id="app">Loading...</div>
+
   <script>
     window.$docsify = {
-      name: 'Hybritech MES',
+      name: '🏭 Hybritech MES',
       repo: '',
+
+      // Cover Page
+      coverpage: true,
+      onlyCover: false,
+
+      // Sidebar - COLLAPSIBLE
       loadSidebar: true,
-      subMaxLevel: 2,
+      subMaxLevel: 3,
+      auto2top: true,
+      sidebarDisplayLevel: 1, // This makes sidebar collapsible
+
+      // Navigation
+      maxLevel: 4,
+
+      // Search
       search: {
-        placeholder: 'Search...',
+        placeholder: '🔍 Search documentation...',
         noData: 'No results found',
-        depth: 3
+        depth: 4,
+        hideOtherSidebarContent: false
       },
+
+      // Pagination
       pagination: {
-        previousText: 'Previous',
-        nextText: 'Next'
+        previousText: '← Previous',
+        nextText: 'Next →',
+        crossChapter: true,
+        crossChapterText: true
+      },
+
+      // Copy Code
+      copyCode: {
+        buttonText: 'Copy',
+        errorText: 'Error',
+        successText: 'Copied!'
+      },
+
+      // Tabs
+      tabs: {
+        persist: true,
+        sync: true,
+        theme: 'material',
+        tabComments: true,
+        tabHeadings: true
+      },
+
+      // Flexible Alerts
+      'flexible-alerts': {
+        style: 'flat',
+        note: {
+          label: "Note"
+        },
+        tip: {
+          label: "Tip"
+        },
+        warning: {
+          label: "Warning"
+        },
+        danger: {
+          label: "Danger"
+        }
       }
     }
   </script>
-  <!-- Docsify v4 -->
+
+  <!-- Docsify Core -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-  <!-- Search plugin -->
+
+  <!-- Plugins -->
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-  <!-- Pagination plugin -->
   <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-plugin-flexible-alerts"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+
+  <!-- Prism for Syntax Highlighting -->
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-typescript.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
 </body>
+
 </html>
