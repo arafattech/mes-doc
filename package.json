@@ -1,0 +1,16 @@
+{
+  "name": "hybritech-mes-docs",
+  "version": "1.0.0",
+  "description": "Hybritech MES Documentation",
+  "scripts": {
+    "dev": "docsify serve .",
+    "serve": "docsify serve ."
+  },
+  "keywords": [
+    "documentation",
+    "docsify",
+    "mes"
+  ],
+  "author": "Hybritech",
+  "license": "MIT"
+}
