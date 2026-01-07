@@ -1,8 +1,11 @@
 # Hybritech MES Documentation
 
 > 🏭 **Manufacturing Execution System** - Complete Documentation Portal
+> 
+> 🔗 **Live Generation:** [https://hybritech-mes-docs.vercel.app](https://hybritech-mes-docs.vercel.app)
 
 Welcome to the official documentation for the **Hybritech Manufacturing Execution System (MES)**. This comprehensive guide provides detailed information about all modules, workflows, and best practices.
+
 
 ---
 
