@@ -298,60 +298,87 @@
     /* Mobile Responsiveness */
     @media screen and (max-width: 768px) {
 
-      /* Better Sidebar Toggle for Mobile */
+      /* Sidebar Toggle Button */
       .sidebar-toggle {
-        background: transparent;
-        color: var(--theme-color);
-        padding: 10px;
+        background: rgba(255, 255, 255, 0.95);
+        border-bottom: 1px solid #eaeaea;
+        padding: 10px 20px;
+        width: 100%;
         position: fixed;
         top: 0;
         left: 0;
-        border-radius: 0 0 4px 0;
-        z-index: 100;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        height: 60px;
+        /* Explicit height */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
       }
 
-      /* Adjust Content Padding */
+      .sidebar-toggle .sidebar-toggle-button>span {
+        background-color: var(--theme-color);
+        /* Make hamburger lines blue */
+      }
+
+      /* Adjust Main Content to account for fixed header */
+      .content {
+        padding-top: 70px !important;
+        /* Space for the toggle bar */
+      }
+
       .markdown-section {
-        padding: 20px 15px 40px;
-        /* Reduced side padding */
+        padding: 20px 20px 40px !important;
       }
 
       /* Typography for Mobile */
+      section.cover h1 {
+        font-size: 2rem !important;
+        margin: 1rem 0 !important;
+      }
+
       .markdown-section h1 {
-        font-size: 1.8rem;
+        font-size: 1.75rem !important;
+        line-height: 1.3;
       }
 
       .markdown-section h2 {
-        font-size: 1.5rem;
+        font-size: 1.4rem !important;
       }
 
-      /* Cover Page Mobile */
-      section.cover h1 {
-        font-size: 2.2rem;
+      /* Sidebar Overlay */
+      body.ready.close .sidebar {
+        transform: translateX(-100%);
+        box-shadow: none;
       }
 
+      body.ready .sidebar {
+        transform: translateX(0);
+        box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        /* Above everything */
+        background: #fff;
+        width: 80% !important;
+        /* Not full width, but wide enough */
+        max-width: 320px;
+      }
+
+      /* Overlay background when menu is open */
+      body.ready:not(.close)::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 998;
+      }
+
+      /* Cover page buttons */
       section.cover .cover-main>p:last-child a {
         display: block;
-        /* Stack buttons on mobile */
-        margin-bottom: 10px;
         width: 100%;
-        box-sizing: border-box;
-      }
-
-      /* Main Content Area */
-      body.close .content {
-        left: 0;
-      }
-
-      /* Sidebar on Mobile */
-      body.close .sidebar {
-        transform: translateX(-100%);
-      }
-
-      /* Search Box */
-      .search {
-        margin-top: 40px;
-        /* Space for toggle button */
+        margin-bottom: 1rem;
       }
     }
   </style>
